@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLUB SEÑOR CRISTO ASCENSION - Oficial</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&display=swap');
+        
+        :root {
+            --primary: #1e3a8a;
+            --secondary: #eab308;
+        }
+
+        body { 
+            font-family: 'Outfit', sans-serif; 
+            scroll-behavior: smooth;
+        }
+
+        /* Transiciones de sección */
+        .page-section { display: none; }
+        .page-section.active { display: block; animation: fadeIn 0.5s ease-in-out; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .glass-nav {
+            background: rgba(30, 58, 138, 0.98);
+            backdrop-filter: blur(10px);
+        }
+
+        .soccer-hero {
+            background: linear-gradient(rgba(30, 58, 138, 0.85), rgba(23, 37, 84, 0.95)), 
+                        url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&q=80&w=2000');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .carousel-item { 
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            object-fit: cover;
+        }
+        .carousel-item.active { opacity: 1; }
+        
+        .admin-dark-bg { background-color: #020617; }
+
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            cursor: pointer;
+            filter: invert(0.8) sepia(1) saturate(5) hue-rotate(10deg);
+        }
+
+        .success-animation {
+            animation: scaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes scaleIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        /* Estilo para el logo */
+        .logo-img {
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
+        }
+
+        /* Estilo para botón deshabilitado */
+        #reg-submit-btn:disabled {
+            background-color: #94a3b8;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-gray-900">
+
+    <!-- Navbar Premium -->
+    <nav class="glass-nav text-white sticky top-0 z-50 shadow-2xl border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3 cursor-pointer group" onclick="window.showPage('home')">
+                <div class="bg-[#eab308] p-1 rounded-xl shadow-lg shadow-yellow-500/20 transform group-hover:rotate-12 transition-transform overflow-hidden">
+                    <!-- CAMBIA TU LOGO AQUÍ (CABECERA) -->
+                    <img src="logo.jpg" alt="Logo Club" class="logo-img" onerror="this.src='https://placehold.co/100x100?text=Logo'">
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-black text-xl tracking-tighter italic uppercase leading-none">CLUB SEÑOR</span>
+                    <span class="text-[#eab308] text-[10px] font-black tracking-[0.3em] uppercase">CRISTO ASCENSION</span>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-6 md:gap-10 font-black uppercase text-[11px] tracking-widest">
+                <button onclick="window.showPage('home')" class="nav-btn hover:text-[#eab308] transition-colors border-b-2 border-transparent hover:border-[#eab308] py-1">Inicio</button>
+                <button onclick="window.showPage('register')" class="nav-btn hover:text-[#eab308] transition-colors border-b-2 border-transparent hover:border-[#eab308] py-1">Inscripción</button>
+                <div class="w-px h-6 bg-white/20 hidden md:block"></div>
+                <button onclick="window.showPage('admin')" class="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full hover:bg-[#eab308] hover:text-[#1e3a8a] transition-all text-[#eab308]">
+                    <i data-lucide="shield-check" class="w-4 h-4"></i> Admin
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- PÁGINA: INICIO -->
+    <section id="page-home" class="page-section active">
+        <!-- Hero Section -->
+        <div class="h-[75vh] soccer-hero flex items-center justify-center text-center px-4">
+            <div class="max-w-4xl">
+                <div class="inline-block bg-[#eab308] text-[#1e3a8a] px-4 py-1 rounded-full font-black text-[10px] uppercase tracking-widest mb-6 animate-pulse">
+                    Academia Oficial de Formación
+                </div>
+                <h1 class="text-white text-6xl md:text-[8rem] font-black italic uppercase leading-[0.9] mb-8 drop-shadow-2xl">
+                    FE Y <span class="text-[#eab308]">PASIÓN</span>
+                </h1>
+                <p class="text-blue-100 text-lg md:text-2xl mb-12 font-medium uppercase tracking-[0.4em] opacity-80">Club Señor Cristo Ascension</p>
+                <button onclick="window.showPage('register')" class="bg-[#eab308] hover:bg-white text-[#1e3a8a] font-black py-6 px-16 rounded-2xl text-xl uppercase transition-all hover:scale-105 shadow-2xl shadow-yellow-500/30 flex items-center justify-center gap-4 mx-auto group">
+                    Inscríbete Ahora <i data-lucide="arrow-right-circle" class="group-hover:translate-x-2 transition-transform"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Información del Club -->
+        <div class="py-24 bg-white px-6">
+            <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-12">
+                <div class="p-12 rounded-[3rem] bg-slate-50 border border-slate-100 text-center group hover:bg-blue-900 transition-colors">
+                    <i data-lucide="users" class="w-12 h-12 text-[#1e3a8a] group-hover:text-white mx-auto mb-6"></i>
+                    <h3 class="font-black text-2xl mb-4 text-[#1e3a8a] group-hover:text-[#eab308] uppercase italic">Entrenadores</h3>
+                    <p class="text-slate-500 group-hover:text-blue-100">Staff técnico certificado con amplia trayectoria en ligas competitivas.</p>
+                </div>
+                <div class="p-12 rounded-[3rem] bg-slate-50 border border-slate-100 text-center group hover:bg-blue-900 transition-colors">
+                    <i data-lucide="calendar" class="w-12 h-12 text-[#1e3a8a] group-hover:text-white mx-auto mb-6"></i>
+                    <h3 class="font-black text-2xl mb-4 text-[#1e3a8a] group-hover:text-[#eab308] uppercase italic">Horarios</h3>
+                    <p class="text-slate-500 group-hover:text-blue-100">Sesiones dinámicas diseñadas para no interferir con las clases escolares.</p>
+                </div>
+                <div class="p-12 rounded-[3rem] bg-slate-50 border border-slate-100 text-center group hover:bg-blue-900 transition-colors">
+                    <i data-lucide="trophy" class="w-12 h-12 text-[#1e3a8a] group-hover:text-white mx-auto mb-6"></i>
+                    <h3 class="font-black text-2xl mb-4 text-[#1e3a8a] group-hover:text-[#eab308] uppercase italic">Torneos</h3>
+                    <p class="text-slate-500 group-hover:text-blue-100">Participación constante en copas regionales y ligas federadas.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Multimedia -->
+        <div class="py-24 bg-blue-900 px-6">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-white text-5xl font-black italic uppercase text-center mb-16">Nuestra <span class="text-[#eab308]">Identidad</span></h2>
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-2 text-[#eab308] font-bold uppercase text-xs tracking-widest">
+                            <i data-lucide="play" class="w-4 h-4 fill-current"></i> Video Oficial
+                        </div>
+                        <div class="aspect-video bg-black rounded-[3rem] overflow-hidden shadow-2xl border-4 border-blue-800">
+                            <iframe class="w-full h-full" src="video.mp4" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-2 text-[#eab308] font-bold uppercase text-xs tracking-widest">
+                            <i data-lucide="image" class="w-4 h-4"></i> Galería en Vivo
+                        </div>
+                        <div class="relative h-[400px] rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white" id="carousel-frame">
+                            <img src="1.jpg" class="carousel-item active">
+                            <img src="2.jpg" class="carousel-item active">
+                            <img src="3.jpg" class="carousel-item active">
+                            <img src="5.jpg" class="carousel-item active">
+                            <img src="7.jpg" class="carousel-item active">
+                            <img src="6.jpg" class="carousel-item active">
+                            <img src="8.jpg" class="carousel-item active">
+                            <img src="flyer.jpg" class="carousel-item active">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PÁGINA: INSCRIPCIÓN -->
+    <section id="page-register" class="page-section py-20 px-4 bg-slate-100 min-h-screen">
+        <div class="max-w-3xl mx-auto bg-white rounded-[3.5rem] shadow-2xl overflow-hidden">
+            <!-- Formulario Principal -->
+            <div id="registration-container">
+                <div class="bg-blue-900 p-16 text-center relative overflow-hidden">
+                    <div class="absolute -top-10 -right-10 w-40 h-40 bg-yellow-500/20 rounded-full"></div>
+                    <h2 class="text-white text-4xl md:text-5xl font-black uppercase italic tracking-tighter">Ficha de Ingreso</h2>
+                    <p class="text-[#eab308] mt-4 font-black uppercase text-xs tracking-[0.4em]">Temporada 2024-2025</p>
+                </div>
+                
+                <form id="form-registration" class="p-12 space-y-8">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="space-y-2">
+                            <label class="text-[10px] font-black uppercase text-slate-400 ml-2">Padre / Madre / Tutor</label>
+                            <input required name="parent" type="text" placeholder="Ej. Carlos Mendoza" class="w-full p-5 bg-slate-50 border-2 border-slate-100 focus:border-[#eab308] focus:bg-white rounded-2xl outline-none transition-all font-semibold">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-[10px] font-black uppercase text-slate-400 ml-2">Nombre del Alumno</label>
+                            <input required name="student" type="text" placeholder="Nombre completo" class="w-full p-5 bg-slate-50 border-2 border-slate-100 focus:border-[#eab308] focus:bg-white rounded-2xl outline-none transition-all font-semibold">
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="space-y-2">
+                            <label class="text-[10px] font-black uppercase text-slate-400 ml-2">Fecha de Nacimiento</label>
+                            <input required name="birthDate" type="date" class="w-full p-5 bg-slate-50 border-2 border-slate-100 focus:border-[#eab308] focus:bg-white rounded-2xl outline-none transition-all font-semibold">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-[10px] font-black uppercase text-slate-400 ml-2">Categoría del Alumno</label>
+                            <select required name="category" class="w-full p-5 bg-slate-50 border-2 border-slate-100 focus:border-[#eab308] focus:bg-white rounded-2xl outline-none transition-all font-semibold appearance-none">
+                                <option value="" disabled selected>Seleccione categoría</option>
+                                <option value="Sub 4 – 5 años (futuro)">Sub 4 – 5 años (futuro)</option>
+                                <option value="Sub 6 – 7 años (Promesa y balón)">Sub 6 – 7 años (Promesa y balón)</option>
+                                <option value="Sub 8 – 9 años (promesa y toque)">Sub 8 – 9 años (promesa y toque)</option>
+                                <option value="Sub 10 – 12 años (promesa y pase)">Sub 10 – 12 años (promesa y pase)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-2">
+                        <label class="text-[10px] font-black uppercase text-slate-400 ml-2">Teléfono de Contacto (WhatsApp)</label>
+                        <input required name="phone" type="tel" placeholder="+51 000 000 000" class="w-full p-5 bg-slate-50 border-2 border-slate-100 focus:border-[#eab308] focus:bg-white rounded-2xl outline-none transition-all font-semibold">
+                    </div>
+
+                    <!-- Política de Imagen -->
+                    <div class="bg-blue-50 p-6 rounded-2xl border border-blue-100">
+                        <div class="flex items-start gap-4">
+                            <input type="checkbox" id="policy-check" class="mt-1.5 w-5 h-5 accent-blue-900 cursor-pointer" onchange="window.toggleSubmitBtn()">
+                            <label for="policy-check" class="text-xs text-slate-600 leading-relaxed cursor-pointer select-none">
+                                <span class="font-black text-blue-900 uppercase block mb-1">Autorización de Uso de Imagen</span>
+                                Autorizo al <b>CLUB SEÑOR CRISTO ASCENSION</b> para captar, utilizar y publicar imágenes o videos del menor inscrito durante entrenamientos y torneos. Este material será usado exclusivamente para fines informativos, publicitarios y redes sociales de la academia, salvaguardando siempre la integridad moral del alumno.
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="reg-submit-btn" disabled class="w-full bg-blue-900 hover:bg-black text-white font-black py-7 rounded-3xl text-xl uppercase transition-all shadow-xl flex items-center justify-center gap-4">
+                        Enviar Inscripción <i data-lucide="send"></i>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Vista de Éxito Post-Registro -->
+            <div id="success-view" class="hidden p-16 text-center space-y-8 success-animation">
+                <div class="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto">
+                    <i data-lucide="check-circle" class="text-green-600 w-12 h-12"></i>
+                </div>
+                <h2 class="text-3xl font-black text-blue-900 uppercase italic">¡Inscripción Exitosa!</h2>
+                <p class="text-slate-500 max-w-md mx-auto">Los datos han sido guardados correctamente en el sistema.</p>
+                
+                <div class="flex flex-col gap-4 max-w-xs mx-auto pt-4">
+                    <a id="whatsapp-link" href="#" target="_blank" class="bg-green-600 hover:bg-green-700 text-white font-black py-4 rounded-2xl flex items-center justify-center gap-3 transition shadow-lg uppercase text-sm">
+                        <i data-lucide="message-circle"></i> Notificar por WhatsApp
+                    </a>
+                    <button onclick="window.resetRegistration()" class="bg-blue-900 hover:bg-black text-white font-black py-4 rounded-2xl flex items-center justify-center gap-3 transition shadow-lg uppercase text-sm tracking-widest">
+                        <i data-lucide="user-plus"></i> Nuevo Registro
+                    </button>
+                    <button onclick="window.showPage('home')" class="bg-slate-100 text-slate-600 font-bold py-4 rounded-2xl flex items-center justify-center gap-3 transition uppercase text-xs">
+                        <i data-lucide="home"></i> Volver al Inicio
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PÁGINA: ADMIN -->
+    <section id="page-admin" class="page-section hidden py-24 px-6 admin-dark-bg min-h-screen">
+        <!-- Pantalla Login -->
+        <div id="admin-auth" class="max-w-md mx-auto bg-white p-12 rounded-[3.5rem] shadow-2xl border-b-8 border-[#eab308] text-center">
+            <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-8 shadow-inner">
+                <i data-lucide="lock" class="text-blue-900 w-10 h-10"></i>
+            </div>
+            <h2 class="text-3xl font-black mb-2 text-blue-900 uppercase italic">Área Directiva</h2>
+            <p class="text-slate-400 text-[10px] mb-10 uppercase tracking-widest font-black">Acceso Protegido</p>
+            
+            <div class="space-y-5">
+                <input id="admin-key-input" type="password" placeholder="Ingresa la clave" class="w-full p-6 bg-slate-50 border-2 border-slate-100 rounded-2xl outline-none focus:border-blue-900 text-center font-black tracking-widest text-lg shadow-inner">
+                <button onclick="window.tryAdminAccess()" class="w-full bg-blue-900 text-white font-black py-5 rounded-2xl uppercase tracking-widest hover:bg-black transition-all shadow-xl">
+                    Desbloquear Sistema
+                </button>
+            </div>
+            <!-- <p class="mt-8 text-[10px] text-slate-300 font-mono italic">CLAVE: admin123</p> -->
+        </div>
+
+        <!-- Dashboard Table -->
+        <div id="admin-dashboard" class="hidden max-w-7xl mx-auto space-y-8 animate-in fade-in duration-700">
+            <div class="flex flex-col lg:flex-row justify-between items-center bg-white p-10 rounded-[3.5rem] shadow-2xl border-l-[12px] border-[#eab308]">
+                <div>
+                    <h2 class="text-4xl font-black text-blue-900 uppercase italic">Gestión de Alumnos</h2>
+                    <p class="text-slate-400 font-black uppercase text-[10px] tracking-widest mt-2" id="reg-counter">Cargando registros...</p>
+                </div>
+                <div class="flex gap-4 mt-8 lg:mt-0">
+                    <button onclick="window.exportToExcel()" class="bg-green-600 hover:bg-green-700 text-white font-black py-4 px-10 rounded-2xl flex items-center gap-3 transition-transform active:scale-95 shadow-xl uppercase text-xs tracking-widest">
+                        <i data-lucide="file-spreadsheet"></i> Descargar Excel (Tabla)
+                    </button>
+                    <button onclick="window.exitAdmin()" class="bg-slate-100 text-slate-500 font-black py-4 px-8 rounded-2xl hover:bg-red-50 hover:text-red-600 transition-all uppercase text-xs tracking-widest">
+                        Cerrar Sesión
+                    </button>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-[3.5rem] shadow-2xl overflow-hidden border border-white/5">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead>
+                            <tr class="bg-slate-50 text-blue-900 uppercase text-[10px] font-black tracking-[0.2em] border-b border-slate-100">
+                                <th class="px-10 py-8">Deportista</th>
+                                <th class="px-10 py-8">Representante</th>
+                                <th class="px-10 py-8 text-center">Nacimiento</th>
+                                <th class="px-10 py-8 text-center">Categoría</th>
+                                <th class="px-10 py-8 text-center">Contacto</th>
+                                <th class="px-10 py-8 text-right">Registrado</th>
+                                <th class="px-6 py-8 text-center">Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-data-rows" class="divide-y divide-slate-50 font-semibold text-sm">
+                            <!-- Datos inyectados -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-white py-20 px-6 border-t-[10px] border-[#eab308]">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12">
+            <div class="text-center md:text-left">
+                <div class="flex items-center justify-center md:justify-start gap-3 mb-4">
+                    <!-- CAMBIA TU LOGO AQUÍ (PIE DE PÁGINA) -->
+                    <img src="logo.jpg" alt="Logo Club" class="logo-img" style="width: 35px; height: 35px;" onerror="this.src='https://placehold.co/100x100?text=Logo'">
+                    <span class="font-black text-2xl italic uppercase tracking-tighter">CLUB SEÑOR CRISTO ASCENSION</span>
+                </div>
+                <p class="text-slate-500 text-sm max-w-sm font-medium">Formando líderes en la cancha y en la vida bajo valores de disciplina y respeto.</p>
+            </div>
+            <div class="text-xs text-slate-600 italic font-black uppercase tracking-widest">
+                © 2024 Sitio Oficial del Club
+            </div>
+        </div>
+    </footer>
+
+    <!-- Firebase y Lógica -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
+        import { getFirestore, collection, addDoc, onSnapshot, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
+
+        // --- MANEJO DE CONFIGURACIÓN ---
+        const DEFAULT_CONFIG = {
+            apiKey: "TU_API_KEY",
+            authDomain: "TU_DOMINIO.firebaseapp.com",
+            projectId: "TU_PROJECT_ID",
+            storageBucket: "TU_BUCKET.appspot.com",
+            messagingSenderId: "TU_SENDER_ID",
+            appId: "TU_APP_ID"
+        };
+
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : DEFAULT_CONFIG;
+        const currentAppId = typeof __app_id !== 'undefined' ? __app_id : 'cristo-ascension-club-prod-v1';
+        
+        let app, auth, db, isFirebaseActive = false;
+
+        try {
+            if (firebaseConfig.apiKey !== "TU_API_KEY") {
+                app = initializeApp(firebaseConfig);
+                auth = getAuth(app);
+                db = getFirestore(app);
+                isFirebaseActive = true;
+            }
+        } catch (e) {
+            console.warn("Firestore desactivado: Usando almacenamiento local.");
+        }
+
+        let regsCache = [];
+        let syncUnsubscribe = null;
+
+        // VINCULACIÓN GLOBAL DE FUNCIONES
+        window.showPage = (pageId) => {
+            if(pageId === 'register') window.resetRegistration();
+
+            document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+            const target = document.getElementById(`page-${pageId}`);
+            if (target) {
+                target.classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                setTimeout(() => lucide.createIcons(), 50);
+            }
+        };
+
+        window.toggleSubmitBtn = () => {
+            const check = document.getElementById('policy-check');
+            const btn = document.getElementById('reg-submit-btn');
+            btn.disabled = !check.checked;
+        };
+
+        window.tryAdminAccess = () => {
+            const key = document.getElementById('admin-key-input').value;
+            if (key.trim() === 'admin123') {
+                document.getElementById('admin-auth').classList.add('hidden');
+                document.getElementById('admin-dashboard').classList.remove('hidden');
+                initSync();
+            } else {
+                alert("Clave incorrecta. Intente de nuevo.");
+                document.getElementById('admin-key-input').value = '';
+            }
+        };
+
+        window.exitAdmin = () => {
+            if (syncUnsubscribe) syncUnsubscribe();
+            document.getElementById('admin-auth').classList.remove('hidden');
+            document.getElementById('admin-dashboard').classList.add('hidden');
+            document.getElementById('admin-key-input').value = '';
+            regsCache = [];
+        };
+
+        window.resetRegistration = () => {
+            document.getElementById('registration-container').classList.remove('hidden');
+            document.getElementById('success-view').classList.add('hidden');
+            document.getElementById('form-registration').reset();
+            window.toggleSubmitBtn(); // Reset button state
+            setTimeout(() => lucide.createIcons(), 50);
+        };
+
+        // EXPORTACIÓN A EXCEL CON FORMATO TABLA (HTML XLS Trick)
+        window.exportToExcel = () => {
+            if (regsCache.length === 0) return alert("No hay alumnos para exportar.");
+            
+            const tableHeaders = `
+                <tr style="background-color: #1e3a8a; color: #ffffff; font-weight: bold;">
+                    <th style="border: 1px solid #000000; padding: 10px;">Deportista</th>
+                    <th style="border: 1px solid #000000; padding: 10px;">Representante</th>
+                    <th style="border: 1px solid #000000; padding: 10px;">Fecha Nacimiento</th>
+                    <th style="border: 1px solid #000000; padding: 10px;">Categoria</th>
+                    <th style="border: 1px solid #000000; padding: 10px;">WhatsApp</th>
+                    <th style="border: 1px solid #000000; padding: 10px;">Fecha Registro</th>
+                </tr>`;
+            
+            const tableRows = regsCache.map(r => `
+                <tr>
+                    <td style="border: 1px solid #000000; padding: 8px;">${r.student}</td>
+                    <td style="border: 1px solid #000000; padding: 8px;">${r.parent}</td>
+                    <td style="border: 1px solid #000000; padding: 8px;">${r.birthDate ? r.birthDate.split('-').reverse().join('/') : 'N/A'}</td>
+                    <td style="border: 1px solid #000000; padding: 8px;">${r.category || 'N/A'}</td>
+                    <td style="border: 1px solid #000000; padding: 8px;">${r.phone}</td>
+                    <td style="border: 1px solid #000000; padding: 8px;">${new Date(r.timestamp).toLocaleDateString()}</td>
+                </tr>`).join("");
+
+            const template = `
+                <html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
+                <head><meta charset="UTF-8">
+                <!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>Alumnos</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]-->
+                </head>
+                <body>
+                    <table style="border-collapse: collapse;">
+                        ${tableHeaders}
+                        ${tableRows}
+                    </table>
+                </body>
+                </html>`;
+
+            const blob = new Blob([template], { type: 'application/vnd.ms-excel' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.setAttribute("href", url);
+            link.setAttribute("download", "REGISTROS_CLUB_CRISTO_ASCENSION.xls");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        };
+
+        // FUNCIÓN ELIMINAR REGISTRO
+        window.deleteEntry = async (docId, timestamp) => {
+            if (!confirm("¿Está seguro de que desea eliminar este registro? Esta acción no se puede deshacer.")) return;
+
+            // 1. Eliminar localmente (localStorage)
+            const localData = JSON.parse(localStorage.getItem('club_registrations') || '[]');
+            const filteredLocal = localData.filter(item => item.timestamp !== timestamp);
+            localStorage.setItem('club_registrations', JSON.stringify(filteredLocal));
+
+            // 2. Eliminar de la Nube
+            if (isFirebaseActive && docId) {
+                try {
+                    const docRef = doc(db, 'artifacts', currentAppId, 'public', 'data', 'registrations', docId);
+                    await deleteDoc(docRef);
+                } catch (err) {
+                    console.error("Error al eliminar de Firestore:", err);
+                    alert("Se eliminó localmente pero falló en la nube.");
+                }
+            }
+
+            // Actualizar vista local si no hay Firebase
+            if (!isFirebaseActive) {
+                regsCache = filteredLocal;
+                renderTable();
+            }
+        };
+
+        // LÓGICA DE DATOS
+        const initSync = () => {
+            const localData = JSON.parse(localStorage.getItem('club_registrations') || '[]');
+            regsCache = localData;
+
+            if (isFirebaseActive) {
+                const q = collection(db, 'artifacts', currentAppId, 'public', 'data', 'registrations');
+                syncUnsubscribe = onSnapshot(q, (snapshot) => {
+                    const fbData = snapshot.docs.map(d => ({ id: d.id, ...d.data() }));
+                    const combined = [...localData, ...fbData];
+                    const unique = combined.filter((v, i, a) => a.findIndex(t => t.timestamp === v.timestamp) === i);
+                    regsCache = unique;
+                    renderTable();
+                }, (err) => console.error("Error Firestore:", err));
+            } else {
+                renderTable();
+            }
+        };
+
+        const renderTable = () => {
+            const tbody = document.getElementById('admin-data-rows');
+            const count = document.getElementById('reg-counter');
+            tbody.innerHTML = '';
+            count.textContent = `${regsCache.length} Alumnos en total`;
+
+            [...regsCache].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp)).forEach(r => {
+                const tr = document.createElement('tr');
+                tr.className = 'hover:bg-blue-50/50 transition-colors border-b border-slate-50';
+                
+                const birth = r.birthDate ? r.birthDate.split('-').reverse().join('/') : 'N/A';
+                const date = new Date(r.timestamp).toLocaleDateString();
+
+                tr.innerHTML = `
+                    <td class="px-10 py-7 font-black text-blue-900 uppercase text-xs">${r.student}</td>
+                    <td class="px-10 py-7 text-slate-500 text-xs font-bold">${r.parent}</td>
+                    <td class="px-10 py-7 text-center font-mono text-xs font-bold text-slate-400">${birth}</td>
+                    <td class="px-10 py-7 text-center">
+                        <span class="bg-blue-900 text-white text-[9px] font-black px-4 py-1.5 rounded-full uppercase italic tracking-widest">${r.category || 'Sub ?'}</span>
+                    </td>
+                    <td class="px-10 py-7 text-center text-blue-900 font-black text-xs underline decoration-[#eab308] underline-offset-4">${r.phone}</td>
+                    <td class="px-10 py-7 text-right text-[10px] text-slate-300 font-mono italic">${date}</td>
+                    <td class="px-6 py-7 text-center">
+                        <button onclick="window.deleteEntry('${r.id || ''}', '${r.timestamp}')" class="text-red-400 hover:text-red-700 transition-colors p-2" title="Eliminar registro">
+                            <i data-lucide="trash-2" class="w-5 h-5"></i>
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+            lucide.createIcons();
+        };
+
+        // MANEJO DEL FORMULARIO
+        document.getElementById('form-registration').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('reg-submit-btn');
+            
+            btn.disabled = true;
+            btn.innerHTML = '<i data-lucide="loader" class="animate-spin"></i> Procesando...';
+            lucide.createIcons();
+
+            const fd = new FormData(e.target);
+            const rawDate = fd.get('birthDate');
+            const formattedDate = rawDate ? rawDate.split('-').reverse().join('/') : 'N/A';
+
+            const data = {
+                parent: fd.get('parent'),
+                student: fd.get('student'),
+                birthDate: rawDate,
+                category: fd.get('category'),
+                phone: fd.get('phone'),
+                timestamp: new Date().toISOString()
+            };
+
+            // WhatsApp Link Construction - NÚMERO ACTUALIZADO: +39 388 390 9873
+            const clubPhone = "393883909873"; 
+            const waMsg = `Hola, envío datos para inscripción CLUB SEÑOR CRISTO ASCENSION:
+            
+Representante: ${data.parent}
+Alumno: ${data.student}
+Nacimiento: ${formattedDate}
+Categoría: ${data.category}
+WhatsApp: ${data.phone}`;
+            
+            const waUrl = `https://api.whatsapp.com/send?phone=${clubPhone}&text=${encodeURIComponent(waMsg)}`;
+            document.getElementById('whatsapp-link').setAttribute('href', waUrl);
+
+            // Guardar local siempre
+            const localData = JSON.parse(localStorage.getItem('club_registrations') || '[]');
+            localData.push(data);
+            localStorage.setItem('club_registrations', JSON.stringify(localData));
+
+            if (isFirebaseActive) {
+                try {
+                    await addDoc(collection(db, 'artifacts', currentAppId, 'public', 'data', 'registrations'), data);
+                } catch (err) { console.error("Fallo nube:", err); }
+            }
+
+            // Mostrar vista de éxito
+            document.getElementById('registration-container').classList.add('hidden');
+            document.getElementById('success-view').classList.remove('hidden');
+            
+            btn.disabled = false;
+            btn.innerHTML = 'Enviar Inscripción <i data-lucide="send"></i>';
+            lucide.createIcons();
+        });
+
+        // CARRUSEL
+        let curSlide = 0;
+        const slides = document.querySelectorAll('.carousel-item');
+        setInterval(() => {
+            if (slides.length > 0) {
+                slides[curSlide].classList.remove('active');
+                curSlide = (curSlide + 1) % slides.length;
+                slides[curSlide].classList.add('active');
+            }
+        }, 3500);
+
+        // INICIALIZACIÓN
+        const startApp = async () => {
+            if (isFirebaseActive) {
+                try {
+                    await signInAnonymously(auth);
+                } catch(e) { console.error("Error Auth:", e); }
+            }
+            lucide.createIcons();
+        };
+        startApp();
+    </script>
+</body>
+</html>
