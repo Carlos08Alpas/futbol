@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,24 +9,37 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&display=swap');
-        
+
         :root {
             --primary: #1e3a8a;
             --secondary: #eab308;
         }
 
-        body { 
-            font-family: 'Outfit', sans-serif; 
+        body {
+            font-family: 'Outfit', sans-serif;
             scroll-behavior: smooth;
         }
 
         /* Transiciones de sección */
-        .page-section { display: none; }
-        .page-section.active { display: block; animation: fadeIn 0.5s ease-in-out; }
-        
+        .page-section {
+            display: none;
+        }
+
+        .page-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .glass-nav {
@@ -34,22 +48,27 @@
         }
 
         .soccer-hero {
-            background: linear-gradient(rgba(30, 58, 138, 0.85), rgba(23, 37, 84, 0.95)), 
-                        url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&q=80&w=2000');
+            background: linear-gradient(rgba(30, 58, 138, 0.85), rgba(23, 37, 84, 0.95)),
+                url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&q=80&w=2000');
             background-size: cover;
             background-position: center;
         }
 
-        .carousel-item { 
+        .carousel-item {
             position: absolute;
             inset: 0;
             opacity: 0;
             transition: opacity 1s ease-in-out;
             object-fit: cover;
         }
-        .carousel-item.active { opacity: 1; }
-        
-        .admin-dark-bg { background-color: #020617; }
+
+        .carousel-item.active {
+            opacity: 1;
+        }
+
+        .admin-dark-bg {
+            background-color: #020617;
+        }
 
         input[type="date"]::-webkit-calendar-picker-indicator {
             cursor: pointer;
@@ -61,8 +80,15 @@
         }
 
         @keyframes scaleIn {
-            from { transform: scale(0.9); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
 
         /* Estilo para el logo */
@@ -79,29 +105,83 @@
             transform: none;
             box-shadow: none;
         }
+
+        /* --- EFECTO FLIP CARD --- */
+        .flip-card {
+            background-color: transparent;
+            perspective: 1000px;
+            min-height: 380px;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            border: 1px solid #f1f5f9;
+        }
+
+        .flip-card-front {
+            background-color: #f8fafc;
+            color: #1e3a8a;
+        }
+
+        .flip-card-back {
+            background-color: #1e3a8a;
+            color: white;
+            transform: rotateY(180deg);
+        }
     </style>
+
 </head>
+
 <body class="bg-slate-50 text-gray-900">
 
     <!-- Navbar Premium -->
     <nav class="glass-nav text-white sticky top-0 z-50 shadow-2xl border-b border-white/10">
         <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-3 cursor-pointer group" onclick="window.showPage('home')">
-                <div class="bg-[#eab308] p-1 rounded-xl shadow-lg shadow-yellow-500/20 transform group-hover:rotate-12 transition-transform overflow-hidden">
+                <div
+                    class="bg-[#eab308] p-1 rounded-xl shadow-lg shadow-yellow-500/20 transform group-hover:rotate-12 transition-transform overflow-hidden">
                     <!-- CAMBIA TU LOGO AQUÍ (CABECERA) -->
-                    <img src="logo.jpg" alt="Logo Club" class="logo-img" onerror="this.src='https://placehold.co/100x100?text=Logo'">
+                    <img src="logo.jpg" alt="Logo Club" class="logo-img"
+                        onerror="this.src='https://placehold.co/100x100?text=Logo'">
                 </div>
                 <div class="flex flex-col">
-                    <span class="font-black text-xl tracking-tighter italic uppercase leading-none">CLUB SEÑOR</span>
-                    <span class="text-[#eab308] text-[10px] font-black tracking-[0.3em] uppercase">CRISTO ASCENSION</span>
+                    <span class="font-black text-xl tracking-tighter italic uppercase leading-none">CLUB SECRISAS</span>
+                    <span class="text-[#eab308] text-[10px] font-black tracking-[0.3em] uppercase">SEÑOR CRISTO
+                        ASCENSION</span>
                 </div>
             </div>
-            
+
             <div class="flex items-center gap-6 md:gap-10 font-black uppercase text-[11px] tracking-widest">
-                <button onclick="window.showPage('home')" class="nav-btn hover:text-[#eab308] transition-colors border-b-2 border-transparent hover:border-[#eab308] py-1">Inicio</button>
-                <button onclick="window.showPage('register')" class="nav-btn hover:text-[#eab308] transition-colors border-b-2 border-transparent hover:border-[#eab308] py-1">Inscripción</button>
+                <button onclick="window.showPage('home')"
+                    class="nav-btn hover:text-[#eab308] transition-colors border-b-2 border-transparent hover:border-[#eab308] py-1">Inicio</button>
+                <button onclick="window.showPage('register')"
+                    class="nav-btn hover:text-[#eab308] transition-colors border-b-2 border-transparent hover:border-[#eab308] py-1">Inscripción</button>
                 <div class="w-px h-6 bg-white/20 hidden md:block"></div>
-                <button onclick="window.showPage('admin')" class="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full hover:bg-[#eab308] hover:text-[#1e3a8a] transition-all text-[#eab308]">
+                <button onclick="window.showPage('admin')"
+                    class="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full hover:bg-[#eab308] hover:text-[#1e3a8a] transition-all text-[#eab308]">
                     <i data-lucide="shield-check" class="w-4 h-4"></i> Admin
                 </button>
             </div>
@@ -113,36 +193,169 @@
         <!-- Hero Section -->
         <div class="h-[75vh] soccer-hero flex items-center justify-center text-center px-4">
             <div class="max-w-4xl">
-                <div class="inline-block bg-[#eab308] text-[#1e3a8a] px-4 py-1 rounded-full font-black text-[10px] uppercase tracking-widest mb-6 animate-pulse">
-                    Academia Oficial de Formación
+                <div
+                    class="inline-block bg-[#eab308] text-[#1e3a8a] px-4 py-1 rounded-full font-black text-[10px] uppercase tracking-widest mb-6 animate-pulse">
+                    Academia Oficial de Formación Deportiva
                 </div>
-                <h1 class="text-white text-6xl md:text-[8rem] font-black italic uppercase leading-[0.9] mb-8 drop-shadow-2xl">
+                <h1
+                    class="text-white text-6xl md:text-[8rem] font-black italic uppercase leading-[0.9] mb-8 drop-shadow-2xl">
                     FE Y <span class="text-[#eab308]">PASIÓN</span>
                 </h1>
-                <p class="text-blue-100 text-lg md:text-2xl mb-12 font-medium uppercase tracking-[0.4em] opacity-80">Club Señor Cristo Ascension</p>
-                <button onclick="window.showPage('register')" class="bg-[#eab308] hover:bg-white text-[#1e3a8a] font-black py-6 px-16 rounded-2xl text-xl uppercase transition-all hover:scale-105 shadow-2xl shadow-yellow-500/30 flex items-center justify-center gap-4 mx-auto group">
-                    Inscríbete Ahora <i data-lucide="arrow-right-circle" class="group-hover:translate-x-2 transition-transform"></i>
+                <p class="text-blue-100 text-lg md:text-2xl mb-12 font-medium uppercase tracking-[0.4em] opacity-80">
+                    Club Señor Cristo Ascension</p>
+                <button onclick="window.showPage('register')"
+                    class="bg-[#eab308] hover:bg-white text-[#1e3a8a] font-black py-6 px-16 rounded-2xl text-xl uppercase transition-all hover:scale-105 shadow-2xl shadow-yellow-500/30 flex items-center justify-center gap-4 mx-auto group">
+                    Inscríbete Ahora <i data-lucide="arrow-right-circle"
+                        class="group-hover:translate-x-2 transition-transform"></i>
                 </button>
+            </div>
+        </div>
+
+
+        <!-- SECCIÓN: RESEÑA DE LA ACADEMIA (ACTUALIZADA) -->
+        <div class="py-24 bg-slate-50 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div class="relative">
+                        <div class="absolute -top-10 -left-10 w-32 h-32 bg-[#eab308]/10 rounded-full blur-3xl"></div>
+                        <h2 class="text-4xl md:text-6xl font-black text-[#1e3a8a] uppercase italic leading-none mb-8">
+                            Nuestra <span class="text-[#eab308]">Historia</span>
+                        </h2>
+                        <div class="space-y-6 text-slate-600 text-lg leading-relaxed font-medium">
+                            <p>
+                                Fundado con orgullo el <span class="font-black text-[#1e3a8a]">23 de agosto del 2015</span>, el Club Deportivo Señor Cristo Ascensión es una institución oficialmente registrada que nació de una profunda historia de fe y un amor incondicional por el fútbol.
+                            </p>
+                            <p>
+                                Con una visión de alcance nacional, contamos con sedes estratégicas en las regiones de <span class="font-black text-[#1e3a8a]">Cusco y Lima</span>, brindando formación de calidad en sectores como <span class="text-blue-900 font-bold italic">La Encalada</span> y <span class="text-blue-900 font-bold italic">Santa Anita</span>. Nuestra academia transforma el talento natural en excelencia deportiva a través de una metodología propia que equilibra disciplina, fe y el disfrute del deporte rey.
+                            </p>
+                            <div class="grid grid-cols-2 gap-6 pt-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="bg-[#eab308] p-2 rounded-lg"><i data-lucide="award" class="text-[#1e3a8a] w-5 h-5"></i></div>
+                                    <span class="font-black uppercase text-xs text-[#1e3a8a]">Sede Cusco - Lima</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <div class="bg-[#eab308] p-2 rounded-lg"><i data-lucide="heart" class="text-[#1e3a8a] w-5 h-5"></i></div>
+                                    <span class="font-black uppercase text-xs text-[#1e3a8a]">Historia de Fe</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <div class="bg-[#eab308] p-2 rounded-lg"><i data-lucide="shield" class="text-[#1e3a8a] w-5 h-5"></i></div>
+                                    <span class="font-black uppercase text-xs text-[#1e3a8a]">Club Registrado</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <div class="bg-[#eab308] p-2 rounded-lg"><i data-lucide="calendar" class="text-[#1e3a8a] w-5 h-5"></i></div>
+                                    <span class="font-black uppercase text-xs text-[#1e3a8a]">Desde 2015</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <div class="rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white transform hover:scale-[1.02] transition-transform duration-500">
+                            <img src="https://images.unsplash.com/photo-1510566337590-2fc1f21d0faa?auto=format&fit=crop&q=80&w=1000" alt="Reseña Club" class="w-full h-full object-cover min-h-[400px]">
+                        </div>
+                        <div class="absolute -bottom-6 -right-6 bg-[#eab308] text-[#1e3a8a] p-8 rounded-3xl shadow-xl hidden md:block">
+                            <p class="font-black text-4xl leading-none italic uppercase">9+</p>
+                            <p class="font-bold text-xs uppercase tracking-tighter">Años de Gloria</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
         <!-- Información del Club -->
         <div class="py-24 bg-white px-6">
             <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-12">
-                <div class="p-12 rounded-[3rem] bg-slate-50 border border-slate-100 text-center group hover:bg-blue-900 transition-colors">
+                <div
+                    class="p-12 rounded-[3rem] bg-slate-50 border border-slate-100 text-center group hover:bg-blue-900 transition-colors">
                     <i data-lucide="users" class="w-12 h-12 text-[#1e3a8a] group-hover:text-white mx-auto mb-6"></i>
-                    <h3 class="font-black text-2xl mb-4 text-[#1e3a8a] group-hover:text-[#eab308] uppercase italic">Entrenadores</h3>
-                    <p class="text-slate-500 group-hover:text-blue-100">Staff técnico certificado con amplia trayectoria en ligas competitivas.</p>
+                    <h3 class="font-black text-2xl mb-4 text-[#1e3a8a] group-hover:text-[#eab308] uppercase italic">
+                        Entrenadores</h3>
+                    <p class="text-slate-500 group-hover:text-blue-100">Staff técnico certificado con amplia trayectoria
+                        en ligas competitivas.</p>
                 </div>
+
+                <!-- 
+
                 <div class="p-12 rounded-[3rem] bg-slate-50 border border-slate-100 text-center group hover:bg-blue-900 transition-colors">
                     <i data-lucide="calendar" class="w-12 h-12 text-[#1e3a8a] group-hover:text-white mx-auto mb-6"></i>
                     <h3 class="font-black text-2xl mb-4 text-[#1e3a8a] group-hover:text-[#eab308] uppercase italic">Horarios</h3>
                     <p class="text-slate-500 group-hover:text-blue-100">Sesiones dinámicas diseñadas para no interferir con las clases escolares.</p>
                 </div>
-                <div class="p-12 rounded-[3rem] bg-slate-50 border border-slate-100 text-center group hover:bg-blue-900 transition-colors">
+                <div class="perspective">
+                    <div
+                        class="relative w-full h-[320px] transition-transform duration-700 transform-style preserve-3d hover:rotate-y-180">
+
+                        
+                        <div
+                            class="absolute inset-0 bg-slate-50 border rounded-[3rem] p-12 text-center backface-hidden">
+                            <i data-lucide="calendar" class="w-12 h-12 text-blue-900 mx-auto mb-6"></i>
+                            <h3 class="font-black text-2xl mb-4 text-blue-900 uppercase italic">
+                                Horarios
+                            </h3>
+                            <p class="text-slate-500">
+                                Sesiones dinámicas diseñadas para no interferir con las clases escolares.
+                            </p>
+                        </div>
+
+                        
+                        <div
+                            class="absolute inset-0 bg-blue-900 text-white rounded-[3rem] p-12 rotate-y-180 backface-hidden flex flex-col justify-center">
+                            <h4 class="text-2xl font-black mb-4 text-yellow-400 uppercase">
+                                Horarios disponibles
+                            </h4>
+                            <ul class="space-y-2 text-blue-100 text-lg">
+                                <li>🕒 Lunes a Viernes: 4:00 – 6:00 pm</li>
+                                <li>🕒 Sábados: 9:00 – 12:00 pm</li>
+                                <li>🕒 Domingos: 10:00 – 1:00 pm</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            -->
+
+                <!-- Tarjeta Giratoria: Horarios -->
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <!-- Lado Frontal -->
+                        <div class="flip-card-front shadow-lg">
+                            <i data-lucide="calendar" class="w-12 h-12 text-[#1e3a8a] mb-6"></i>
+                            <h3 class="font-black text-2xl mb-4 text-[#1e3a8a] uppercase italic">Horarios</h3>
+                            <p class="text-slate-500">Sesiones dinámicas diseñadas para no interferir con las clases escolares.</p>
+                            <span class="mt-6 text-[10px] font-black text-[#eab308] uppercase tracking-widest animate-pulse">Pasa el cursor para ver más</span>
+                        </div>
+                        <!-- Lado Posterior (Detalle de horarios) -->
+                        <div class="flip-card-back shadow-2xl border-4 border-[#eab308]">
+                            <h3 class="font-black text-2xl mb-6 text-[#eab308] uppercase italic">Nuestros Turnos</h3>
+                            <div class="space-y-4 text-left w-full">
+                                <div class="border-b border-white/10 pb-2">
+                                    <p class="text-[10px] font-black text-[#eab308] uppercase">Sub 4 - 5</p>
+                                    <p class="text-sm font-bold">Mar - Jue : 4:00 PM - 5:30 PM</p>
+                                </div>
+                                <div class="border-b border-white/10 pb-2">
+                                    <p class="text-[10px] font-black text-[#eab308] uppercase">Sub 6 - 7</p>
+                                    <p class="text-sm font-bold">Lun - Mie - Vie : 4:00 PM - 5:00 PM</p>
+                                </div>
+                                <div class="border-b border-white/10 pb-2">
+                                    <p class="text-[10px] font-black text-[#eab308] uppercase">Sub 8 - 9</p>
+                                    <p class="text-sm font-bold">Lun - Mie - Vie : 5:00 PM - 6:00 PM</p>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] font-black text-[#eab308] uppercase">Sub 10 - 12</p>
+                                    <p class="text-sm font-bold">Lun - Mie - Vie : 6:00 PM - 7:00 PM</p>
+                                </div>
+                            </div>
+                            <i data-lucide="clock" class="mt-6 w-8 h-8 text-[#eab308] opacity-50"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="p-12 rounded-[3rem] bg-slate-50 border border-slate-100 text-center group hover:bg-blue-900 transition-colors">
                     <i data-lucide="trophy" class="w-12 h-12 text-[#1e3a8a] group-hover:text-white mx-auto mb-6"></i>
-                    <h3 class="font-black text-2xl mb-4 text-[#1e3a8a] group-hover:text-[#eab308] uppercase italic">Torneos</h3>
-                    <p class="text-slate-500 group-hover:text-blue-100">Participación constante en copas regionales y ligas federadas.</p>
+                    <h3 class="font-black text-2xl mb-4 text-[#1e3a8a] group-hover:text-[#eab308] uppercase italic">
+                        Torneos</h3>
+                    <p class="text-slate-500 group-hover:text-blue-100">Participación constante en copas regionales y
+                        ligas federadas.</p>
                 </div>
             </div>
         </div>
@@ -150,13 +363,15 @@
         <!-- Multimedia -->
         <div class="py-24 bg-blue-900 px-6">
             <div class="max-w-7xl mx-auto">
-                <h2 class="text-white text-5xl font-black italic uppercase text-center mb-16">Nuestra <span class="text-[#eab308]">Identidad</span></h2>
+                <h2 class="text-white text-5xl font-black italic uppercase text-center mb-16">Nuestra <span
+                        class="text-[#eab308]">Identidad</span></h2>
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
                     <div class="space-y-6">
                         <div class="flex items-center gap-2 text-[#eab308] font-bold uppercase text-xs tracking-widest">
                             <i data-lucide="play" class="w-4 h-4 fill-current"></i> Video Oficial
                         </div>
-                        <div class="aspect-video bg-black rounded-[3rem] overflow-hidden shadow-2xl border-4 border-blue-800">
+                        <div
+                            class="aspect-video bg-black rounded-[3rem] overflow-hidden shadow-2xl border-4 border-blue-800">
                             <iframe class="w-full h-full" src="video.mp4" frameborder="0" allowfullscreen></iframe>
                         </div>
                     </div>
@@ -164,7 +379,8 @@
                         <div class="flex items-center gap-2 text-[#eab308] font-bold uppercase text-xs tracking-widest">
                             <i data-lucide="image" class="w-4 h-4"></i> Galería en Vivo
                         </div>
-                        <div class="relative h-[400px] rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white" id="carousel-frame">
+                        <div class="relative h-[400px] rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white"
+                            id="carousel-frame">
                             <img src="1.jpg" class="carousel-item active">
                             <img src="2.jpg" class="carousel-item active">
                             <img src="3.jpg" class="carousel-item active">
@@ -187,56 +403,78 @@
             <div id="registration-container">
                 <div class="bg-blue-900 p-16 text-center relative overflow-hidden">
                     <div class="absolute -top-10 -right-10 w-40 h-40 bg-yellow-500/20 rounded-full"></div>
-                    <h2 class="text-white text-4xl md:text-5xl font-black uppercase italic tracking-tighter">Ficha de Ingreso</h2>
+                    <h2 class="text-white text-4xl md:text-5xl font-black uppercase italic tracking-tighter">Ficha de
+                        Ingreso</h2>
                     <p class="text-[#eab308] mt-4 font-black uppercase text-xs tracking-[0.4em]">Temporada 2024-2025</p>
                 </div>
-                
+
                 <form id="form-registration" class="p-12 space-y-8">
                     <div class="grid md:grid-cols-2 gap-8">
                         <div class="space-y-2">
-                            <label class="text-[10px] font-black uppercase text-slate-400 ml-2">Padre / Madre / Tutor</label>
-                            <input required name="parent" type="text" placeholder="Ej. Carlos Mendoza" class="w-full p-5 bg-slate-50 border-2 border-slate-100 focus:border-[#eab308] focus:bg-white rounded-2xl outline-none transition-all font-semibold">
+                            <label class="text-[10px] font-black uppercase text-slate-400 ml-2">Padre / Madre /
+                                Tutor</label>
+                            <input required name="parent" type="text" placeholder="Ej. Carlos Mendoza"
+                                class="w-full p-5 bg-slate-50 border-2 border-slate-100 focus:border-[#eab308] focus:bg-white rounded-2xl outline-none transition-all font-semibold">
                         </div>
                         <div class="space-y-2">
-                            <label class="text-[10px] font-black uppercase text-slate-400 ml-2">Nombre del Alumno</label>
-                            <input required name="student" type="text" placeholder="Nombre completo" class="w-full p-5 bg-slate-50 border-2 border-slate-100 focus:border-[#eab308] focus:bg-white rounded-2xl outline-none transition-all font-semibold">
+                            <label class="text-[10px] font-black uppercase text-slate-400 ml-2">Nombre del
+                                Alumno</label>
+                            <input required name="student" type="text" placeholder="Nombre completo"
+                                class="w-full p-5 bg-slate-50 border-2 border-slate-100 focus:border-[#eab308] focus:bg-white rounded-2xl outline-none transition-all font-semibold">
                         </div>
                     </div>
-                    
+
                     <div class="grid md:grid-cols-2 gap-8">
                         <div class="space-y-2">
-                            <label class="text-[10px] font-black uppercase text-slate-400 ml-2">Fecha de Nacimiento</label>
-                            <input required name="birthDate" type="date" class="w-full p-5 bg-slate-50 border-2 border-slate-100 focus:border-[#eab308] focus:bg-white rounded-2xl outline-none transition-all font-semibold">
+                            <label class="text-[10px] font-black uppercase text-slate-400 ml-2">Fecha de
+                                Nacimiento</label>
+                            <input required name="birthDate" type="date"
+                                class="w-full p-5 bg-slate-50 border-2 border-slate-100 focus:border-[#eab308] focus:bg-white rounded-2xl outline-none transition-all font-semibold">
                         </div>
                         <div class="space-y-2">
-                            <label class="text-[10px] font-black uppercase text-slate-400 ml-2">Categoría del Alumno</label>
-                            <select required name="category" class="w-full p-5 bg-slate-50 border-2 border-slate-100 focus:border-[#eab308] focus:bg-white rounded-2xl outline-none transition-all font-semibold appearance-none">
+                            <label class="text-[10px] font-black uppercase text-slate-400 ml-2">Categoría del
+                                Alumno</label>
+                            <select required name="category"
+                                class="w-full p-5 bg-slate-50 border-2 border-slate-100 focus:border-[#eab308] focus:bg-white rounded-2xl outline-none transition-all font-semibold appearance-none">
                                 <option value="" disabled selected>Seleccione categoría</option>
                                 <option value="Sub 4 – 5 años (futuro)">Sub 4 – 5 años (futuro)</option>
-                                <option value="Sub 6 – 7 años (Promesa y balón)">Sub 6 – 7 años (Promesa y balón)</option>
-                                <option value="Sub 8 – 9 años (promesa y toque)">Sub 8 – 9 años (promesa y toque)</option>
-                                <option value="Sub 10 – 12 años (promesa y pase)">Sub 10 – 12 años (promesa y pase)</option>
+                                <option value="Sub 6 – 7 años (Promesa y balón)">Sub 6 – 7 años (Promesa y balón)
+                                </option>
+                                <option value="Sub 8 – 9 años (promesa y toque)">Sub 8 – 9 años (promesa y toque)
+                                </option>
+                                <option value="Sub 10 – 12 años (promesa y pase)">Sub 10 – 12 años (promesa y pase)
+                                </option>
                             </select>
                         </div>
                     </div>
-                    
+
                     <div class="space-y-2">
-                        <label class="text-[10px] font-black uppercase text-slate-400 ml-2">Teléfono de Contacto (WhatsApp)</label>
-                        <input required name="phone" type="tel" placeholder="+51 000 000 000" class="w-full p-5 bg-slate-50 border-2 border-slate-100 focus:border-[#eab308] focus:bg-white rounded-2xl outline-none transition-all font-semibold">
+                        <label class="text-[10px] font-black uppercase text-slate-400 ml-2">Teléfono de Contacto
+                            (WhatsApp)</label>
+                        <input required name="phone" type="tel" placeholder="+51 000 000 000"
+                            class="w-full p-5 bg-slate-50 border-2 border-slate-100 focus:border-[#eab308] focus:bg-white rounded-2xl outline-none transition-all font-semibold">
                     </div>
 
                     <!-- Política de Imagen -->
                     <div class="bg-blue-50 p-6 rounded-2xl border border-blue-100">
                         <div class="flex items-start gap-4">
-                            <input type="checkbox" id="policy-check" class="mt-1.5 w-5 h-5 accent-blue-900 cursor-pointer" onchange="window.toggleSubmitBtn()">
-                            <label for="policy-check" class="text-xs text-slate-600 leading-relaxed cursor-pointer select-none">
-                                <span class="font-black text-blue-900 uppercase block mb-1">Autorización de Uso de Imagen</span>
-                                Autorizo al <b>CLUB SEÑOR CRISTO ASCENSION</b> para captar, utilizar y publicar imágenes o videos del menor inscrito durante entrenamientos y torneos. Este material será usado exclusivamente para fines informativos, publicitarios y redes sociales de la academia, salvaguardando siempre la integridad moral del alumno.
+                            <input type="checkbox" id="policy-check"
+                                class="mt-1.5 w-5 h-5 accent-blue-900 cursor-pointer"
+                                onchange="window.toggleSubmitBtn()">
+                            <label for="policy-check"
+                                class="text-xs text-slate-600 leading-relaxed cursor-pointer select-none">
+                                <span class="font-black text-blue-900 uppercase block mb-1">Autorización de Uso de
+                                    Imagen</span>
+                                Autorizo al <b>CLUB SEÑOR CRISTO ASCENSION</b> para captar, utilizar y publicar imágenes
+                                o videos del menor inscrito durante entrenamientos y torneos. Este material será usado
+                                exclusivamente para fines informativos, publicitarios y redes sociales de la academia,
+                                salvaguardando siempre la integridad moral del alumno.
                             </label>
                         </div>
                     </div>
 
-                    <button type="submit" id="reg-submit-btn" disabled class="w-full bg-blue-900 hover:bg-black text-white font-black py-7 rounded-3xl text-xl uppercase transition-all shadow-xl flex items-center justify-center gap-4">
+                    <button type="submit" id="reg-submit-btn" disabled
+                        class="w-full bg-blue-900 hover:bg-black text-white font-black py-7 rounded-3xl text-xl uppercase transition-all shadow-xl flex items-center justify-center gap-4">
                         Enviar Inscripción <i data-lucide="send"></i>
                     </button>
                 </form>
@@ -249,15 +487,18 @@
                 </div>
                 <h2 class="text-3xl font-black text-blue-900 uppercase italic">¡Inscripción Exitosa!</h2>
                 <p class="text-slate-500 max-w-md mx-auto">Los datos han sido guardados correctamente en el sistema.</p>
-                
+
                 <div class="flex flex-col gap-4 max-w-xs mx-auto pt-4">
-                    <a id="whatsapp-link" href="#" target="_blank" class="bg-green-600 hover:bg-green-700 text-white font-black py-4 rounded-2xl flex items-center justify-center gap-3 transition shadow-lg uppercase text-sm">
+                    <a id="whatsapp-link" href="#" target="_blank"
+                        class="bg-green-600 hover:bg-green-700 text-white font-black py-4 rounded-2xl flex items-center justify-center gap-3 transition shadow-lg uppercase text-sm">
                         <i data-lucide="message-circle"></i> Notificar por WhatsApp
                     </a>
-                    <button onclick="window.resetRegistration()" class="bg-blue-900 hover:bg-black text-white font-black py-4 rounded-2xl flex items-center justify-center gap-3 transition shadow-lg uppercase text-sm tracking-widest">
+                    <button onclick="window.resetRegistration()"
+                        class="bg-blue-900 hover:bg-black text-white font-black py-4 rounded-2xl flex items-center justify-center gap-3 transition shadow-lg uppercase text-sm tracking-widest">
                         <i data-lucide="user-plus"></i> Nuevo Registro
                     </button>
-                    <button onclick="window.showPage('home')" class="bg-slate-100 text-slate-600 font-bold py-4 rounded-2xl flex items-center justify-center gap-3 transition uppercase text-xs">
+                    <button onclick="window.showPage('home')"
+                        class="bg-slate-100 text-slate-600 font-bold py-4 rounded-2xl flex items-center justify-center gap-3 transition uppercase text-xs">
                         <i data-lucide="home"></i> Volver al Inicio
                     </button>
                 </div>
@@ -268,16 +509,19 @@
     <!-- PÁGINA: ADMIN -->
     <section id="page-admin" class="page-section hidden py-24 px-6 admin-dark-bg min-h-screen">
         <!-- Pantalla Login -->
-        <div id="admin-auth" class="max-w-md mx-auto bg-white p-12 rounded-[3.5rem] shadow-2xl border-b-8 border-[#eab308] text-center">
+        <div id="admin-auth"
+            class="max-w-md mx-auto bg-white p-12 rounded-[3.5rem] shadow-2xl border-b-8 border-[#eab308] text-center">
             <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-8 shadow-inner">
                 <i data-lucide="lock" class="text-blue-900 w-10 h-10"></i>
             </div>
             <h2 class="text-3xl font-black mb-2 text-blue-900 uppercase italic">Área Directiva</h2>
             <p class="text-slate-400 text-[10px] mb-10 uppercase tracking-widest font-black">Acceso Protegido</p>
-            
+
             <div class="space-y-5">
-                <input id="admin-key-input" type="password" placeholder="Ingresa la clave" class="w-full p-6 bg-slate-50 border-2 border-slate-100 rounded-2xl outline-none focus:border-blue-900 text-center font-black tracking-widest text-lg shadow-inner">
-                <button onclick="window.tryAdminAccess()" class="w-full bg-blue-900 text-white font-black py-5 rounded-2xl uppercase tracking-widest hover:bg-black transition-all shadow-xl">
+                <input id="admin-key-input" type="password" placeholder="Ingresa la clave"
+                    class="w-full p-6 bg-slate-50 border-2 border-slate-100 rounded-2xl outline-none focus:border-blue-900 text-center font-black tracking-widest text-lg shadow-inner">
+                <button onclick="window.tryAdminAccess()"
+                    class="w-full bg-blue-900 text-white font-black py-5 rounded-2xl uppercase tracking-widest hover:bg-black transition-all shadow-xl">
                     Desbloquear Sistema
                 </button>
             </div>
@@ -286,16 +530,20 @@
 
         <!-- Dashboard Table -->
         <div id="admin-dashboard" class="hidden max-w-7xl mx-auto space-y-8 animate-in fade-in duration-700">
-            <div class="flex flex-col lg:flex-row justify-between items-center bg-white p-10 rounded-[3.5rem] shadow-2xl border-l-[12px] border-[#eab308]">
+            <div
+                class="flex flex-col lg:flex-row justify-between items-center bg-white p-10 rounded-[3.5rem] shadow-2xl border-l-[12px] border-[#eab308]">
                 <div>
                     <h2 class="text-4xl font-black text-blue-900 uppercase italic">Gestión de Alumnos</h2>
-                    <p class="text-slate-400 font-black uppercase text-[10px] tracking-widest mt-2" id="reg-counter">Cargando registros...</p>
+                    <p class="text-slate-400 font-black uppercase text-[10px] tracking-widest mt-2" id="reg-counter">
+                        Cargando registros...</p>
                 </div>
                 <div class="flex gap-4 mt-8 lg:mt-0">
-                    <button onclick="window.exportToExcel()" class="bg-green-600 hover:bg-green-700 text-white font-black py-4 px-10 rounded-2xl flex items-center gap-3 transition-transform active:scale-95 shadow-xl uppercase text-xs tracking-widest">
+                    <button onclick="window.exportToExcel()"
+                        class="bg-green-600 hover:bg-green-700 text-white font-black py-4 px-10 rounded-2xl flex items-center gap-3 transition-transform active:scale-95 shadow-xl uppercase text-xs tracking-widest">
                         <i data-lucide="file-spreadsheet"></i> Descargar Excel (Tabla)
                     </button>
-                    <button onclick="window.exitAdmin()" class="bg-slate-100 text-slate-500 font-black py-4 px-8 rounded-2xl hover:bg-red-50 hover:text-red-600 transition-all uppercase text-xs tracking-widest">
+                    <button onclick="window.exitAdmin()"
+                        class="bg-slate-100 text-slate-500 font-black py-4 px-8 rounded-2xl hover:bg-red-50 hover:text-red-600 transition-all uppercase text-xs tracking-widest">
                         Cerrar Sesión
                     </button>
                 </div>
@@ -305,7 +553,8 @@
                 <div class="overflow-x-auto">
                     <table class="w-full text-left">
                         <thead>
-                            <tr class="bg-slate-50 text-blue-900 uppercase text-[10px] font-black tracking-[0.2em] border-b border-slate-100">
+                            <tr
+                                class="bg-slate-50 text-blue-900 uppercase text-[10px] font-black tracking-[0.2em] border-b border-slate-100">
                                 <th class="px-10 py-8">Deportista</th>
                                 <th class="px-10 py-8">Representante</th>
                                 <th class="px-10 py-8 text-center">Nacimiento</th>
@@ -330,10 +579,13 @@
             <div class="text-center md:text-left">
                 <div class="flex items-center justify-center md:justify-start gap-3 mb-4">
                     <!-- CAMBIA TU LOGO AQUÍ (PIE DE PÁGINA) -->
-                    <img src="logo.jpg" alt="Logo Club" class="logo-img" style="width: 35px; height: 35px;" onerror="this.src='https://placehold.co/100x100?text=Logo'">
-                    <span class="font-black text-2xl italic uppercase tracking-tighter">CLUB SEÑOR CRISTO ASCENSION</span>
+                    <img src="logo.jpg" alt="Logo Club" class="logo-img" style="width: 35px; height: 35px;"
+                        onerror="this.src='https://placehold.co/100x100?text=Logo'">
+                    <span class="font-black text-2xl italic uppercase tracking-tighter">CLUB SEÑOR CRISTO
+                        ASCENSION</span>
                 </div>
-                <p class="text-slate-500 text-sm max-w-sm font-medium">Formando líderes en la cancha y en la vida bajo valores de disciplina y respeto.</p>
+                <p class="text-slate-500 text-sm max-w-sm font-medium">Formando líderes en la cancha y en la vida bajo
+                    valores de disciplina y respeto.</p>
             </div>
             <div class="text-xs text-slate-600 italic font-black uppercase tracking-widest">
                 © 2024 Sitio Oficial del Club
@@ -359,7 +611,7 @@
 
         const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : DEFAULT_CONFIG;
         const currentAppId = typeof __app_id !== 'undefined' ? __app_id : 'cristo-ascension-club-prod-v1';
-        
+
         let app, auth, db, isFirebaseActive = false;
 
         try {
@@ -378,7 +630,7 @@
 
         // VINCULACIÓN GLOBAL DE FUNCIONES
         window.showPage = (pageId) => {
-            if(pageId === 'register') window.resetRegistration();
+            if (pageId === 'register') window.resetRegistration();
 
             document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
             const target = document.getElementById(`page-${pageId}`);
@@ -426,7 +678,7 @@
         // EXPORTACIÓN A EXCEL CON FORMATO TABLA (HTML XLS Trick)
         window.exportToExcel = () => {
             if (regsCache.length === 0) return alert("No hay alumnos para exportar.");
-            
+
             const tableHeaders = `
                 <tr style="background-color: #1e3a8a; color: #ffffff; font-weight: bold;">
                     <th style="border: 1px solid #000000; padding: 10px;">Deportista</th>
@@ -436,7 +688,7 @@
                     <th style="border: 1px solid #000000; padding: 10px;">WhatsApp</th>
                     <th style="border: 1px solid #000000; padding: 10px;">Fecha Registro</th>
                 </tr>`;
-            
+
             const tableRows = regsCache.map(r => `
                 <tr>
                     <td style="border: 1px solid #000000; padding: 8px;">${r.student}</td>
@@ -525,7 +777,7 @@
             [...regsCache].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp)).forEach(r => {
                 const tr = document.createElement('tr');
                 tr.className = 'hover:bg-blue-50/50 transition-colors border-b border-slate-50';
-                
+
                 const birth = r.birthDate ? r.birthDate.split('-').reverse().join('/') : 'N/A';
                 const date = new Date(r.timestamp).toLocaleDateString();
 
@@ -553,7 +805,7 @@
         document.getElementById('form-registration').addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = document.getElementById('reg-submit-btn');
-            
+
             btn.disabled = true;
             btn.innerHTML = '<i data-lucide="loader" class="animate-spin"></i> Procesando...';
             lucide.createIcons();
@@ -572,7 +824,7 @@
             };
 
             // WhatsApp Link Construction - NÚMERO ACTUALIZADO: +39 388 390 9873
-            const clubPhone = "393883909873"; 
+            const clubPhone = "393883909873";
             const waMsg = `Hola, envío datos para inscripción CLUB SEÑOR CRISTO ASCENSION:
             
 Representante: ${data.parent}
@@ -580,7 +832,7 @@ Alumno: ${data.student}
 Nacimiento: ${formattedDate}
 Categoría: ${data.category}
 WhatsApp: ${data.phone}`;
-            
+
             const waUrl = `https://api.whatsapp.com/send?phone=${clubPhone}&text=${encodeURIComponent(waMsg)}`;
             document.getElementById('whatsapp-link').setAttribute('href', waUrl);
 
@@ -598,7 +850,7 @@ WhatsApp: ${data.phone}`;
             // Mostrar vista de éxito
             document.getElementById('registration-container').classList.add('hidden');
             document.getElementById('success-view').classList.remove('hidden');
-            
+
             btn.disabled = false;
             btn.innerHTML = 'Enviar Inscripción <i data-lucide="send"></i>';
             lucide.createIcons();
@@ -620,11 +872,14 @@ WhatsApp: ${data.phone}`;
             if (isFirebaseActive) {
                 try {
                     await signInAnonymously(auth);
-                } catch(e) { console.error("Error Auth:", e); }
+                } catch (e) { console.error("Error Auth:", e); }
             }
             lucide.createIcons();
         };
         startApp();
+
+
     </script>
 </body>
+
 </html>
