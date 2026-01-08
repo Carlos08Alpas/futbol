@@ -405,7 +405,7 @@
                     <div class="absolute -top-10 -right-10 w-40 h-40 bg-yellow-500/20 rounded-full"></div>
                     <h2 class="text-white text-4xl md:text-5xl font-black uppercase italic tracking-tighter">Ficha de
                         Ingreso</h2>
-                    <p class="text-[#eab308] mt-4 font-black uppercase text-xs tracking-[0.4em]">Temporada 2025-2026</p>
+                    <p class="text-[#eab308] mt-4 font-black uppercase text-xs tracking-[0.4em]">Temporada 2024-2025</p>
                 </div>
 
                 <form id="form-registration" class="p-12 space-y-8">
@@ -601,14 +601,14 @@
 
         // --- MANEJO DE CONFIGURACIÓN ---
         const DEFAULT_CONFIG = {
-            apiKey: "TU_API_KEY",
-            authDomain: "TU_DOMINIO.firebaseapp.com",
-            projectId: "TU_PROJECT_ID",
-            storageBucket: "TU_BUCKET.appspot.com",
-            messagingSenderId: "TU_SENDER_ID",
-            appId: "TU_APP_ID"
+            apiKey: "AIzaSyDM9bXKiQE614I0SC1otHUKzKM_NSp5uxU",
+            authDomain: "clubcristoascension.firebaseapp.com",
+            projectId: "clubcristoascension",
+            storageBucket: "clubcristoascension.firebasestorage.app",
+            messagingSenderId: "232835967670",
+            appId: "1:232835967670:web:50e9929315f28d8cfed417",
+            measurementId: "G-ESK7QPTS0M"
         };
-
         const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : DEFAULT_CONFIG;
         const currentAppId = typeof __app_id !== 'undefined' ? __app_id : 'cristo-ascension-club-prod-v1';
 
@@ -823,8 +823,8 @@
                 timestamp: new Date().toISOString()
             };
 
-            // WhatsApp Link Construction - NÚMERO ACTUALIZADO: +51 997548587
-            const clubPhone = "997548587";
+            // WhatsApp Link Construction - NÚMERO ACTUALIZADO: +51 997 548 587
+            const clubPhone = "997 548 587";
             const waMsg = `Hola, envío datos para inscripción CLUB SEÑOR CRISTO ASCENSION:
             
 Representante: ${data.parent}
@@ -883,4 +883,3 @@ WhatsApp: ${data.phone}`;
 </body>
 
 </html>
-
