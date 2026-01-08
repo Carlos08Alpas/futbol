@@ -1,0 +1,1 @@
+https://clubcristoascension.firebaseapp.com/__/auth/handler
